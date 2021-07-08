@@ -1,17 +1,17 @@
-<h3 class='has-text-centered'>Adicionando Novo Treino</h3>
+<h1 class='title has-text-centered'>Adicionando Novo Treino</h1>
 <div class='columns'>
-  <div class='column'>
+  <div class='column is-8 is-offset-2'>
     <%= form_for(@routine, :html => {class: "form-horizontal", role: "form"}) do |f| %>
       <div class='field'>
-        <%= f.label :name, class: 'label' %>
+        <%= f.label :name, 'Nome', class: 'label' %>
         <div class='control'>
-          <%= f.text_field :description, placeholder: 'Nome', autofocus: true %>
+          <%= f.text_field :description, class: 'input', placeholder: 'Entre com o nome do treino', autofocus: true %>
         </div>
       </div>
       <div class='field'>
-        <%= f.label :body, class: 'label' %>
+        <%= f.label :description, 'Descrição', class: 'label' %>
         <div class='control'>
-          <%= f.text_area :description, rows: 10, placeholder: 'Descrição' %>
+          <%= f.text_area :description, class: 'textarea', rows: 10, placeholder: 'Entre com a descrição detalhada do treino' %>
         </div>
       </div>
       <div class='field is-grouped'>

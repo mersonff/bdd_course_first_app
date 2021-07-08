@@ -1,0 +1,24 @@
+<h3 class='has-text-centered'>Adicionando Novo Treino</h3>
+<div class='columns'>
+  <div class='column'>
+    <%= form_for(@routine, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class='field'>
+        <%= f.label :name, class: 'label' %>
+        <div class='control'>
+          <%= f.text_field :description, placeholder: 'Nome', autofocus: true %>
+        </div>
+      </div>
+      <div class='field'>
+        <%= f.label :body, class: 'label' %>
+        <div class='control'>
+          <%= f.text_area :description, rows: 10, placeholder: 'Descrição' %>
+        </div>
+      </div>
+      <div class='field is-grouped'>
+        <div class='control'>
+          <%= f.submit "Salvar", class: 'button is-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

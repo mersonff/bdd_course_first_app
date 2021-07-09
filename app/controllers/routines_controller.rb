@@ -9,9 +9,13 @@ class RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
-    @routine.save
-    flash[:success] = "Treino criado com sucesso"
-    redirect_to routines_path
+    if @routine.save
+      flash[:success] = "Treino criado com sucesso"
+      redirect_to routines_path
+    else
+      flash.now[:danger] = "Não foi possível criar o treino"
+      render :new
+    end
   end
 
   private

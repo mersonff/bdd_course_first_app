@@ -76,8 +76,10 @@
     <br/>
     <div class="container">
       <% flash.each do |key, message| %>
-        <div class="has-text-centered message is-<%= key == 'notice'? 'success': 'danger' %>">
-          <%= message %>
+        <div class="has-text-centered message is-<%= key %>">
+          <div class="message-body">
+            <%= message %>
+          </div>
         </div>
       <% end %>
       <%= yield %>

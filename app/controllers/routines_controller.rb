@@ -7,6 +7,10 @@ class RoutinesController < ApplicationController
     @routine = Routine.new
   end
 
+  def edit
+    @routine = Routine.find(params[:id])
+  end
+
   def show
     @routine = Routine.find(params[:id])
   end
@@ -19,6 +23,17 @@ class RoutinesController < ApplicationController
     else
       flash.now[:danger] = "Não foi possível criar o treino"
       render :new
+    end
+  end
+
+  def update
+    @routine = Routine.find(params[:id])
+    if @routine.update(routine_params)
+      flash[:success] = "Treino atualizado com sucesso"
+      redirect_to @routine
+    else
+      flash.now[:danger] = "Treino não foi atualizado"
+      render :edit
     end
   end
 

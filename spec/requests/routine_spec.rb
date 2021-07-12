@@ -15,7 +15,7 @@ RSpec.describe "Treinos", type: :request do
       it "trata treinos não existentes" do
         expect(response.status).to eq 302
         flash_message = "O treino não foi encontrado"
-        expect(flash[:alert]).to eq flash_message
+        expect(flash[:warning]).to eq flash_message
       end
     end
   end

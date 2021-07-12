@@ -12,7 +12,7 @@ RSpec.feature 'Exibindo Treinos', type: feature do
 
     expect(page).to have_content(@routine.name)
     expect(page).to have_content(@routine.description)
-    expect(page.current_path).to eq(routines_path(@routine))
+    expect(page.current_path).to eq(routine_path(@routine))
   end
 
 end

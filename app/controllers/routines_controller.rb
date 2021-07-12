@@ -27,4 +27,12 @@ class RoutinesController < ApplicationController
   def routine_params
     params.require(:routine).permit(:name, :description)
   end
+
+  protected
+
+  def resource_not_found
+    message = "O treino não foi encontrado"
+    flash[:warning] = message
+    redirect_to root_path
+  end
 end

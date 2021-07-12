@@ -1,4 +1,5 @@
 class RoutinesController < ApplicationController
+  before_action :set_routine, only: [:show, :edit, :update, :destroy]
   def index
     @routines = Routine.all
   end
@@ -8,11 +9,9 @@ class RoutinesController < ApplicationController
   end
 
   def edit
-    @routine = Routine.find(params[:id])
   end
 
   def show
-    @routine = Routine.find(params[:id])
   end
 
   def create
@@ -27,7 +26,6 @@ class RoutinesController < ApplicationController
   end
 
   def update
-    @routine = Routine.find(params[:id])
     if @routine.update(routine_params)
       flash[:success] = "Treino atualizado com sucesso"
       redirect_to @routine
@@ -37,10 +35,21 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def destroy
+    if @routine.destroy
+      flash[:success] = "Treino deletado com sucesso"
+      redirect_to routines_path
+    end
+  end
+
   private
 
   def routine_params
     params.require(:routine).permit(:name, :description)
+  end
+
+  def set_routine
+    @routine = Routine.find(params[:id])
   end
 
   protected

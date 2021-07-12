@@ -10,13 +10,21 @@
         <div class="content">
           <%= @routine.description %>
           <br>
-          <div class="is-pulled-right"> Criado em: <%= l @routine.created_at, format: '%d/%m/%Y' %></div>
+          <div class="is-pulled-right"> <b>Criado em:</b> <%= l @routine.created_at, format: '%d/%m/%Y' %></div>
         </div>
       </div>
     </div>
     <br/>
-    <div class="buttons">
-      <%= link_to "Editar Treino", edit_routine_path(@routine), class: "button is-warning" %>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= link_to "Editar Treino", edit_routine_path(@routine), class: "button is-warning" %>
+      </div>
+      <div class="control">
+        <%= link_to "Deletar Treino", routine_path(@routine),
+                    method: :delete,
+                    data: { confirm: "Tem certeza que quer deletar o treino?" },
+                    class: "button is-danger" %>
+      </div>
     </div>
   </div>
 </div>

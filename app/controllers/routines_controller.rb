@@ -7,6 +7,10 @@ class RoutinesController < ApplicationController
     @routine = Routine.new
   end
 
+  def show
+    @routine = Routine.find(params[:id])
+  end
+
   def create
     @routine = Routine.new(routine_params)
     if @routine.save

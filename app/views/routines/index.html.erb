@@ -16,7 +16,7 @@
       <% @routines.each do |routine| %>
         <div class="message">
           <div class="message-header">
-            <%= link_to routine.name, routines_path(routine) %>
+            <%= link_to routine.name, routine_path(routine) %>
           </div>
           <div class="message-body">
             <div class="content">

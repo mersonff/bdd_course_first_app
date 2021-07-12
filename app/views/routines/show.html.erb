@@ -1,0 +1,20 @@
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= @routine.name %>
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <%= @routine.description %>
+          <br>
+          <div class="is-pulled-right"> Criado em: <%= l @routine.created_at, format: '%d/%m/%Y' %></div>
+        </div>
+      </div>
+    </div>
+    <br/>
+
+  </div>
+</div>

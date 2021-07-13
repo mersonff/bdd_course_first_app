@@ -61,9 +61,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
+                <% unless current_page?(new_user_registration_path) %>
+                  <%= link_to "Registrar-se", new_user_registration_path, class: 'button is-primary' %>
+                <% end %>
+                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: 'button is-primary' %>
                 <a class="button is-light">
                   Log in
                 </a>

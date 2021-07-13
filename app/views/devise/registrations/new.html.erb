@@ -1,0 +1,36 @@
+<div class="columns">
+  <div class="column is-6 is-offset-3">
+    <h2 class="title is-2 has-text-centered">Registrar-se</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email, "Email", class: 'label' %>
+        <div class="control">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', type: 'email  '%>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, 'Senha', class: 'label'%>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
+        <% if @minimum_password_length %>
+          <em>(Mínimo de caracteres: <%= @minimum_password_length %>)</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmar senha", class: 'label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Registrar-se", class: 'button is-primary' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+

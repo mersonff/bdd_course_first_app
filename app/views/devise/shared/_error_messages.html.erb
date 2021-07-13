@@ -1,0 +1,18 @@
+<% if resource.errors.any? %>
+  <div class="panel is-danger is-offset-1">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <%= pluralize(resource.errors.count, "erro") %>
+        proibiram esse usuário de ser salvo: </h2>
+      <div class="panel-block">
+        <ul>
+          <% resource.errors.full_messages.each do |msg| %>
+            <li>
+              - <%= msg %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

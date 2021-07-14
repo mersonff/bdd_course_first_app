@@ -2,13 +2,13 @@
 <div class="columns">
   <div class="column is-8 is is-offset-2">
     <div class="buttons">
-      <%= link_to "Novo Treino", new_routine_path, class: 'button is-link' %>
+      <%= link_to (t "helpers.link.routine.new"), new_routine_path, class: 'button is-link' %>
     </div>
     <% if @routines.empty? %>
       <div class="message" id="no-routines">
         <div class="message-body">
           <div class="content">
-            NENHUM TREINO CRIADO
+            <%= t "helpers.messages.no_routines" %>
           </div>
         </div>
       </div>

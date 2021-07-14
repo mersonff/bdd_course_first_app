@@ -8,10 +8,10 @@ RSpec.feature 'Editando Treinos' do
   scenario 'Um usuário atualiza um treino' do
     visit "/"
     click_link @routine.name
-    click_link "Editar Treino"
+    click_link "Editar"
     fill_in "Nome", with: "Treino Atualizado"
     fill_in "Descrição", with: "Supino 4x10"
-    click_button "Atualizar Treino"
+    click_button "Atualizar"
     expect(page).to have_content("Treino atualizado com sucesso")
     expect(page.current_path).to eq(routine_path(@routine))
   end
@@ -19,10 +19,10 @@ RSpec.feature 'Editando Treinos' do
   scenario 'Um usuário falha ao atualizar um treino' do
     visit "/"
     click_link @routine.name
-    click_link "Editar Treino"
+    click_link "Editar"
     fill_in "Nome", with: ""
     fill_in "Descrição", with: "Supino 4x10"
-    click_button "Atualizar Treino"
+    click_button "Atualizar"
     expect(page).to have_content("Treino não foi atualizado")
     expect(page.current_path).to eq(routine_path(@routine))
   end

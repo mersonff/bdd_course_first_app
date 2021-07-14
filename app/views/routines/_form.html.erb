@@ -20,20 +20,20 @@
         </div>
       <% end %>
       <div class='field'>
-        <%= f.label :name, 'Nome', class: 'label' %>
+        <%= f.label :name, class: 'label' %>
         <div class='control'>
-          <%= f.text_field :name, class: 'input', placeholder: 'Entre com o nome do treino', autofocus: true %>
+          <%= f.text_field :name, class: 'input', autofocus: true %>
         </div>
       </div>
       <div class='field'>
-        <%= f.label :description, 'Descrição', class: 'label' %>
+        <%= f.label :description, class: 'label' %>
         <div class='control'>
-          <%= f.text_area :description, class: 'textarea', rows: 10, placeholder: 'Entre com a descrição detalhada do treino' %>
+          <%= f.text_area :description, class: 'textarea', rows: 10 %>
         </div>
       </div>
       <div class='field is-grouped'>
         <div class='control'>
-          <%= f.submit (@routine.new_record? ? "Salvar" : "Atualizar Treino") , class: 'button is-link' %>
+          <%= f.submit (@routine.new_record? ? (I18n.t ("helpers.submit.submit")) : (I18n.t ("helpers.submit.update"))), class: 'button is-link' %>
         </div>
       </div>
     <% end %>

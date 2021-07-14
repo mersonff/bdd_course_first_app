@@ -8,7 +8,7 @@ RSpec.feature "Usuário se registra" do
     fill_in "Senha", with: "password"
     fill_in "Confirmar senha", with: "password"
     click_button "Registrar-se"
-    expect(page).to have_content("Registro realizado com sucesso.")
+    expect(page).to have_content("Você realizou seu registro com sucesso.")
   end
 
   scenario "com credenciais inválidas" do

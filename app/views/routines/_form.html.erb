@@ -1,24 +1,7 @@
 <div class='columns'>
   <div class='column is-8 is-offset-2'>
     <%= form_for(@routine, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-      <% if @routine.errors.any? %>
-        <div class="panel is-danger is-offset-1">
-          <div class="panel-heading">
-            <h2 class="panel-title">
-              <%= pluralize(@routine.errors.count, "erro") %>
-              proibiram esse treino de ser salvo: </h2>
-            <div class="panel-block">
-              <ul>
-                <% @routine.errors.full_messages.each do |msg| %>
-                  <li>
-                    - <%= msg %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'shared/errors', obj: @routine %>
       <div class='field'>
         <%= f.label :name, class: 'label' %>
         <div class='control'>

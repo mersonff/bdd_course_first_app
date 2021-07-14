@@ -4,7 +4,7 @@ pt-BR:
       routine:
         name: Nome
         description: Descrição
-    model:
+    models:
       routine: Treino
     errors:
       messages:

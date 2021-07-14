@@ -1,0 +1,52 @@
+<header>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to root_path, class:'navbar-item' do %>
+        <%= image_tag("dumb.png", alt: "Logo", size: '100x28') %>
+      <% end %>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to (t "helpers.navbar.home"), root_path, class:'navbar-item'%>
+        <%= link_to (t "helpers.navbar.routines"), routines_path, class:'navbar-item'%>
+
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <%#= t 'helpers.navbar.routines' %>
+              </a>
+
+              <div class="navbar-dropdown">
+                <%#= link_to (t "helpers.link.routine.new"), new_routine_path, class:'navbar-item'%>
+                <%#= link_to (t "helpers.link.routine.list"), routines_path, class:'navbar-item'%>
+              </div>
+            </div>-->
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% unless user_signed_in? %>
+              <% unless current_page?(new_user_registration_path) %>
+                <%= link_to (t "helpers.devise.sign_up_link"), new_user_registration_path, class: 'button is-primary' %>
+              <% end %>
+              <%= link_to "Log in", new_user_session_path, class: 'button' %>
+            <% end %>
+            <% if user_signed_in? %>
+              <div class="navbar-item">
+                <%= t "helpers.devise.signed_in_as" %>  <%= "#{current_user.email}" %>
+              </div>
+              <%= link_to (t "helpers.navbar.logout"), destroy_user_session_path, method: :delete, class: 'button is-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

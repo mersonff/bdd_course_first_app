@@ -169,6 +169,7 @@ pt-BR:
         list: Listar Treinos
     messages:
       no_routines: NENHUM TREINO CRIADO
+      owner_restriction: Você só pode editar ou deletar seus próprios treinos.
     routine:
       edit:
         title: Editando um Treino

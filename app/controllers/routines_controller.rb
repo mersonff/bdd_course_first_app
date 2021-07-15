@@ -10,6 +10,10 @@ class RoutinesController < ApplicationController
   end
 
   def edit
+    unless @routine.user == current_user
+      flash[:alert] = t "helpers.messages.owner_restriction"
+      redirect_to root_path
+    end
   end
 
   def show
@@ -22,32 +26,42 @@ class RoutinesController < ApplicationController
       flash[:success] = "Treino criado com sucesso"
       redirect_to routines_path
     else
-      flash.now[:danger] = "Não foi possível criar o treino"
+      flash.now[:alert] = "Não foi possível criar o treino"
       render :new
     end
   end
 
   def update
-    if @routine.update(routine_params)
-      flash[:success] = "Treino atualizado com sucesso"
-      redirect_to @routine
+    unless @routine.user == current_user
+      flash[:alert] = t "helpers.messages.owner_restriction"
+      redirect_to root_path
     else
-      flash.now[:danger] = "Treino não foi atualizado"
-      render :edit
+      if @routine.update(routine_params)
+        flash[:success] = "Treino atualizado com sucesso"
+        redirect_to @routine
+      else
+        flash.now[:alert] = "Treino não foi atualizado"
+        render :edit
+      end
     end
   end
 
   def destroy
-    if @routine.destroy
-      flash[:success] = "Treino deletado com sucesso"
-      redirect_to routines_path
+    unless @routine.user == current_user
+      flash[:alert] = t "helpers.messages.owner_restriction"
+      redirect_to root_path
+    else
+      if @routine.destroy
+        flash[:success] = "Treino deletado com sucesso"
+        redirect_to routines_path
+      end
     end
   end
 
   private
 
   def routine_params
-    params.require(:routine).permit(:name, :description)
+    params.require(:routine).permit(:name, :description, :user_id)
   end
 
   def set_routine

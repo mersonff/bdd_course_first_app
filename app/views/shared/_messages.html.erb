@@ -1,5 +1,5 @@
 <% flash.each do |key, message| %>
-  <div class="has-text-centered notification is-<%= key == 'notice' ? 'success' : 'danger' %>">
+  <div class="has-text-centered notification is-<%= key == 'alert' ? 'danger' : 'success' %>">
     <button class="delete"></button>
     <%= message %>
   </div>

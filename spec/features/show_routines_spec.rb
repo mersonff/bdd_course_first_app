@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Exibindo Treinos', type: feature do
 
   before do
-    @routine = Routine.create(name: 'Treino A', description: 'Supino 3x10')
+    john = User.create(email: "john@example.com", password: "password")
+    login_as(john)
+
+    @routine = Routine.create(name: 'Treino A', description: 'Supino 3x10', user: john)
   end
 
   scenario 'Um usuário exibe um treino' do

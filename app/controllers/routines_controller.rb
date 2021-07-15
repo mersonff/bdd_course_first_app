@@ -17,6 +17,7 @@ class RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
+    @routine.user = current_user
     if @routine.save
       flash[:success] = "Treino criado com sucesso"
       redirect_to routines_path

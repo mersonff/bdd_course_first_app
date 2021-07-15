@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Criando Treinos", type: feature do
+  before do
+    @john = User.create(email: "john@example.com", password: "password")
+    login_as(@john)
+  end
+
   scenario "Um usuário cria um novo treino" do
     visit "/"
 
@@ -11,6 +16,7 @@ RSpec.feature "Criando Treinos", type: feature do
                                Agachamento: 3x15"
     click_button "Salvar"
     expect(page).to have_content("Treino criado com sucesso")
+    expect(Routine.last.user).to eq(@john)
     expect(page.current_path).to eq(routines_path)
   end
 

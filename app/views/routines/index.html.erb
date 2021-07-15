@@ -1,9 +1,11 @@
 
 <div class="columns">
   <div class="column is-8 is is-offset-2">
-    <div class="buttons">
-      <%= link_to (t "helpers.link.routine.new"), new_routine_path, class: 'button is-link' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="buttons">
+        <%= link_to (t "helpers.link.routine.new"), new_routine_path, class: 'button is-link' %>
+      </div>
+    <% end %>
     <% if @routines.empty? %>
       <div class="message" id="no-routines">
         <div class="message-body">

@@ -15,16 +15,18 @@
       </div>
     </div>
     <br/>
-    <div class="field is-grouped">
-      <div class="control">
-        <%= link_to (t "actions.edit"), edit_routine_path(@routine), class: "button is-warning" %>
+    <% if user_signed_in? && current_user == @routine.user %>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= link_to (t "actions.edit"), edit_routine_path(@routine), class: "button is-warning" %>
+        </div>
+        <div class="control">
+          <%= link_to (t "actions.destroy"), routine_path(@routine),
+                      method: :delete,
+                      data: { confirm: (t "actions.confirm") },
+                      class: "button is-danger" %>
+        </div>
       </div>
-      <div class="control">
-        <%= link_to (t "actions.destroy"), routine_path(@routine),
-                    method: :delete,
-                    data: { confirm: (t "actions.confirm") },
-                    class: "button is-danger" %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

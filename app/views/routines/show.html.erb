@@ -28,5 +28,40 @@
         </div>
       </div>
     <% end %>
+    <hr>
+
+    <%= form_for [@routine, @comment], :html => {class: "form-horizontal", role: "form"} do |f| %>
+      <%= render 'shared/errors', obj: @comment %>
+
+      <div class='field'>
+        <%= f.label :body, "Novo comentário", class: 'label' %>
+        <div class='control'>
+          <%= f.text_area :body, class: 'textarea', rows: 10 %>
+        </div>
+      </div>
+      <div class='field is-grouped'>
+        <div class='control'>
+          <%= f.submit "Comentar", class: 'button is-link' %>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <h2 class="title is-h2">Comments</h2>
+    <% if persisted_comments(@comments).any? %>
+      <% persisted_comments(@comments).each do |comment| %>
+        <div class="comment-body">
+          <%= comment.body %>
+        </div>
+        <div class="comment-time">
+          <%= time_ago_in_words(comment.created_at) %>
+          atras por <%= comment.user.email %>
+        </div>
+        <hr>
+      <% end %>
+    <% else %>
+      <p> Nenhum comentário adicionado. </p>
+    <% end %>
   </div>
+
 </div>
+

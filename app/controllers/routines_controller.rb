@@ -17,6 +17,8 @@ class RoutinesController < ApplicationController
   end
 
   def show
+    @comment = @routine.comments.build
+    @comments = @routine.comments
   end
 
   def create

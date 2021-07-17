@@ -30,7 +30,7 @@
     <% end %>
     <hr>
 
-    <%= form_for [@routine, @comment], :html => {class: "form-horizontal", role: "form"} do |f| %>
+    <%= form_for [@routine, @comment], :html => {class: "form-horizontal", role: "form"}, remote: true do |f| %>
       <%= render 'shared/errors', obj: @comment %>
 
       <div class='field'>
@@ -48,16 +48,18 @@
     <hr>
     <h2 class="title is-h2">Comentários</h2>
     <% if persisted_comments(@comments).any? %>
-      <% persisted_comments(@comments).each do |comment| %>
-        <div class="comment-body">
-          <%= comment.body %>
-        </div>
-        <div class="comment-time">
-          <%= time_ago_in_words(comment.created_at) %>
-          atras por <%= comment.user.email %>
-        </div>
-        <hr>
-      <% end %>
+      <div id="messages">
+        <% persisted_comments(@comments).each do |comment| %>
+          <div class="comment-body">
+            <%= comment.body %>
+          </div>
+          <div class="comment-time">
+            <%= time_ago_in_words(comment.created_at) %>
+            atras por <%= comment.user.email %>
+          </div>
+          <hr>
+        <% end %>
+      </div>
     <% else %>
       <p> Nenhum comentário adicionado. </p>
     <% end %>

@@ -5,11 +5,13 @@ class CommentsController < ApplicationController
     @comment = @routine.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
+      ActionCable.server.broadcast "comments",
+                                   render(partial: 'comments/comment', object: @comment )
       flash[:notice] = "Comentário enviado"
     else
       flash[:alert] = "Comentário não enviado"
+      redirect_to routine_path(@routine)
     end
-    redirect_to routine_path(@routine)
   end
 
   private

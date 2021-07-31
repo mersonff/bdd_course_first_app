@@ -25,6 +25,7 @@ gem 'redis', '~> 4.0'
 gem 'rexml'
 gem "bulma-rails", "~> 0.9.1"
 gem 'devise'
+gem 'rename'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

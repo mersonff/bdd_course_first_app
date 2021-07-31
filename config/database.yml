@@ -14,17 +14,17 @@ default: &default
 
 development:
   <<: *default
-  database: db/bdd_course_first_app_dev
+  database: db/workouts_tracker_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/bdd_course_first_app_test
+  database: db/workouts_tracker_test
 
 production:
   <<: *default
-  database: db/bdd_course_first_app_production
-  username: bdd_course_first_app
-  password: <%= ENV['BDD_COURSE_FIRST_APP_DATABASE_PASSWORD'] %>
+  database: db/workouts_tracker_production
+  username: workouts_tracker
+  password: <%= ENV['workouts_tracker_DATABASE_PASSWORD'] %>
